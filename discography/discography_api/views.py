@@ -1,13 +1,12 @@
-from typing import TypeVar, Type
+from typing import Type, TypeVar
 
 from rest_framework import serializers
-from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework.generics import RetrieveAPIView
+from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from .serializers import (PerformerSerializer,
-                          PerformerDetailSerializer,
-                          AlbumDetailSerializer,)
-from .models import Performer, Album
+from .models import Album, Performer
+from .serializers import (AlbumDetailSerializer, PerformerDetailSerializer,
+                          PerformerSerializer)
 
 T = TypeVar("T", bound=serializers.ModelSerializer)
 

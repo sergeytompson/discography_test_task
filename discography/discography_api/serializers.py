@@ -1,14 +1,20 @@
 from rest_framework import serializers
 
-from .models import Performer, Album, AlbumSongs
+from .models import Album, AlbumSongs, Performer
 
 
 class AlbumSongsSerializer(serializers.ModelSerializer):
-    song = serializers.SlugRelatedField(slug_field="name", read_only=True,)
+    song = serializers.SlugRelatedField(
+        slug_field="name",
+        read_only=True,
+    )
 
     class Meta:
         model = AlbumSongs
-        fields = ("serial_number", "song",)
+        fields = (
+            "serial_number",
+            "song",
+        )
 
 
 class AlbumSerializer(serializers.ModelSerializer):
@@ -18,7 +24,10 @@ class AlbumSerializer(serializers.ModelSerializer):
 
 
 class AlbumDetailSerializer(serializers.ModelSerializer):
-    songs = AlbumSongsSerializer(many=True, read_only=True,)
+    songs = AlbumSongsSerializer(
+        many=True,
+        read_only=True,
+    )
 
     class Meta:
         model = Album
@@ -28,11 +37,17 @@ class AlbumDetailSerializer(serializers.ModelSerializer):
 class PerformerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Performer
-        fields = ("pk", "name",)
+        fields = (
+            "pk",
+            "name",
+        )
 
 
 class PerformerDetailSerializer(serializers.ModelSerializer):
-    albums = AlbumSerializer(many=True, read_only=True,)
+    albums = AlbumSerializer(
+        many=True,
+        read_only=True,
+    )
 
     class Meta:
         model = Performer

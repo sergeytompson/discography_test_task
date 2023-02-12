@@ -2,7 +2,10 @@ from django.db import models
 
 
 class Performer(models.Model):
-    name = models.CharField("Исполнитель", max_length=150,)
+    name = models.CharField(
+        "Исполнитель",
+        max_length=150,
+    )
 
     def __str__(self) -> str:
         return self.name
@@ -13,13 +16,18 @@ class Performer(models.Model):
 
 
 class Album(models.Model):
-    name = models.CharField("Название альбома", max_length=150,)
-    year_of_issue = models.IntegerField("Год выпуска альбома",)
+    name = models.CharField(
+        "Название альбома",
+        max_length=150,
+    )
+    year_of_issue = models.IntegerField(
+        "Год выпуска альбома",
+    )
     performer = models.ForeignKey(
         Performer,
         on_delete=models.CASCADE,
         verbose_name="Исполнитель",
-        related_name="albums"
+        related_name="albums",
     )
 
     def __str__(self) -> str:
@@ -31,7 +39,10 @@ class Album(models.Model):
 
 
 class Song(models.Model):
-    name = models.CharField("Песня", max_length=150,)
+    name = models.CharField(
+        "Песня",
+        max_length=150,
+    )
 
     def __str__(self) -> str:
         return self.name
@@ -53,7 +64,9 @@ class AlbumSongs(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Песня",
     )
-    serial_number = models.IntegerField("Порядковый номер песни в альбоме",)
+    serial_number = models.IntegerField(
+        "Порядковый номер песни в альбоме",
+    )
 
     class Meta:
         verbose_name = "Песня в альбоме"
