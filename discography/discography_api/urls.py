@@ -13,7 +13,7 @@ router.register(
 urlpatterns = [
     path("", include(router.urls)),
     path(
-        "performer/<int:pk>/album/<int:pk2>/",
+        "performer/<int:performer_pk>/album/<int:album_pk>/",
         AlbumDetailAPIView.as_view(),
     ),
 ]

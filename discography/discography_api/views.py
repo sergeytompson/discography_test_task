@@ -23,7 +23,7 @@ class PerformerViewSet(ReadOnlyModelViewSet):
 
 class AlbumDetailAPIView(RetrieveAPIView):
     serializer_class = AlbumDetailSerializer
-    lookup_url_kwarg = "pk2"
+    lookup_url_kwarg = "album_pk"
 
     def get_queryset(self):
-        return Album.objects.filter(performer=self.kwargs["pk"])
+        return Album.objects.filter(performer=self.kwargs["performer_pk"])
